@@ -1,0 +1,14 @@
+Base de Datos MySQL:
+jdbc:mysql://localhost:3306/automoviles
+usuario: root
+contraseña: password
+
+Base de Datos postgresql:
+jdbc:postgresql://localhost:5432/zapateria
+usuario: postgres
+contraseña: password
+
+Base de Datos MongoDB:
+mongodb://localhost:27017
+usuario: admin
+contraseña: password
