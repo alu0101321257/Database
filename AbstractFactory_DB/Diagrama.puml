@@ -1,0 +1,112 @@
+@startuml
+class Entrega.MongoDBConnection {
+- MongoClient mongoClient
+- MongoDatabase database
+- String url
+- String databaseName
++ boolean connect()
++ void disconnect()
++ MongoDatabase getDatabase()
+}
+
+
+class Entrega.DatabaseConnectionManager {
+- Scanner scanner
++ QueryExecutor initializeConnection()
+- DatabaseFactory createFactoryBasedOnUrl(String)
+}
+
+
+class Entrega.MySQLDatabaseFactory {
++ DBConnection createConnection(String,String,String)
++ QueryExecutor createQueryExecutor(DBConnection)
+}
+
+class Entrega.MainInteractivo {
++ {static} void main(String[])
+}
+
+class Entrega.MongoDBDatabaseFactory {
++ DBConnection createConnection(String,String,String)
++ QueryExecutor createQueryExecutor(DBConnection)
+}
+
+class Entrega.PostgreSQLDatabaseFactory {
++ DBConnection createConnection(String,String,String)
++ QueryExecutor createQueryExecutor(DBConnection)
+}
+
+class Entrega.MySQLQueryExecutor {
+- DBConnection dbConnection
++ void executeQuery(String)
++ void insert(String,String)
++ void delete(String,String)
+}
+
+
+interface Entrega.DatabaseFactory {
+~ DBConnection createConnection(String,String,String)
+~ QueryExecutor createQueryExecutor(DBConnection)
+}
+
+interface Entrega.DBConnection {
+~ boolean connect()
+~ void disconnect()
+}
+
+class Entrega.PostgreSQLConnection {
+- String url
+- String username
+- String password
+- Connection connection
++ boolean connect()
++ void disconnect()
++ Connection getConnection()
+}
+
+
+class Entrega.MySQLConnection {
+- String url
+- String username
+- String password
+- Connection connection
++ boolean connect()
++ void disconnect()
++ Connection getConnection()
+}
+
+
+interface Entrega.QueryExecutor {
+~ void executeQuery(String)
+~ void insert(String,String)
+~ void delete(String,String)
+}
+
+class Entrega.MongoDBQueryExecutor {
+- MongoDBConnection dbConnection
++ void executeQuery(String)
++ void insert(String,String)
++ void delete(String,String)
+}
+
+
+class Entrega.PostgreSQLQueryExecutor {
+- DBConnection dbConnection
++ void executeQuery(String)
++ void insert(String,String)
++ void delete(String,String)
+}
+
+
+
+
+Entrega.DBConnection <|.. Entrega.MongoDBConnection
+Entrega.DatabaseFactory <|.. Entrega.MySQLDatabaseFactory
+Entrega.DatabaseFactory <|.. Entrega.MongoDBDatabaseFactory
+Entrega.DatabaseFactory <|.. Entrega.PostgreSQLDatabaseFactory
+Entrega.QueryExecutor <|.. Entrega.MySQLQueryExecutor
+Entrega.DBConnection <|.. Entrega.PostgreSQLConnection
+Entrega.DBConnection <|.. Entrega.MySQLConnection
+Entrega.QueryExecutor <|.. Entrega.MongoDBQueryExecutor
+Entrega.QueryExecutor <|.. Entrega.PostgreSQLQueryExecutor
+@enduml
