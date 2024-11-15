@@ -1,0 +1,21 @@
+Base de Datos MySQL:
+jdbc:mysql://localhost:3306/automoviles
+usuario: root
+contraseña: password
+ejemplo añadir: ('1234', 'Renault', '4', 'Verde', 'SUV')
+ejemplo eliminar: matricula='1234'
+
+Base de Datos postgresql:
+jdbc:postgresql://localhost:5432/zapateria
+usuario: postgres
+contraseña: password
+ejemplo añadir: ('5', 'Nike', '43', 'Azul', '70.0')
+ejemplo eliminar: id_zapato='5'
+
+
+Base de Datos MongoDB:
+mongodb://localhost:27017
+usuario: admin
+contraseña: password
+ejemplo añadir: { "dni": 130, "nombre": "Ana", "apellido": "Perez", "sexo": "F", "edad": 21, "grado": "Arquitectura", "nota_media": 8.7 }
+ejemplo eliminar: { "dni": 130 }
